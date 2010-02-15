@@ -18,7 +18,6 @@ setup(
     include_package_data = True,
     package_dir = {'':'src'},
     namespace_packages = ['mt'],
-    install_requires = ['zc.buildout', 'setuptools'],
     entry_points = {
         'zc.buildout': [
              'default = %s:Recipe' % name],
@@ -26,8 +25,11 @@ setup(
             'default = %s:uninstall' % name],
         },
     test_suite = 'mt.instance.tests.test_recipe.test_suite',
-    tests_require = ['zc.buildout',
-                     'zope.testing',
-                     'setuptools',
-                     'py == 0.9.0',],
+    tests_require = ['zope.testing',
+                     'iw.recipe.template',
+                    ],
+    install_requires = ['zc.buildout',
+                        'setuptools',
+                        'iw.recipe.template',
+                       ],
     )
