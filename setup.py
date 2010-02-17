@@ -1,30 +1,30 @@
 from setuptools import setup, find_packages
 
-name = "mt.instance"
+name = "so.instance"
 setup(
     name = name,
     version = "0.1",
-    author = "Róman Joost",
+    author = "Roman Joost",
     author_email = "roman@bromeco.de",
-    description = "zc.buildout recipe to run a metatracker instance.",
+    description = "zc.buildout recipe to run a superorganism instance.",
     long_description = open('README.txt').read() + 
         '\n\n' + 
         open('CHANGES.txt').read(),
     license = "GPL",
-    keywords = "buildout recipe metatracker",
+    keywords = "buildout recipe superorganism bugtracker",
     classifiers = ["Framework :: Buildout"],
     zip_safe=False,
     packages = find_packages('src'),
     include_package_data = True,
     package_dir = {'':'src'},
-    namespace_packages = ['mt'],
+    namespace_packages = ['so'],
     entry_points = {
         'zc.buildout': [
              'default = %s:Recipe' % name],
         'zc.buildout.uninstall': [
             'default = %s:uninstall' % name],
         },
-    test_suite = 'mt.instance.tests.test_recipe.test_suite',
+    test_suite = 'so.instance.tests.test_recipe.test_suite',
     tests_require = ['zope.testing',
                      'iw.recipe.template',
                     ],

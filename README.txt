@@ -1,6 +1,6 @@
-======================
- Metatracker Instance
-======================
+===================================
+ Superorganism Bugtracker Instance
+===================================
 
-This buildout recipe creates an executable for running a metatracker
+This buildout recipe creates an executable for running a superorganism
 instance.

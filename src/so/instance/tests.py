@@ -10,12 +10,12 @@ def setUp(test):
     install_develop('zope.testing', test)
     install_develop('Cheetah', test)
     install_develop('iw.recipe.template', test)
-    install_develop('mt.instance', test)
+    install_develop('so.instance', test)
 
 def test_suite():
     """ returns the test suite """
     return TestSuite([
         doctestunit.DocFileSuite(
-           'README.txt', package='mt.instance',
+           'README.txt', package='so.instance',
            optionflags=COMPARISON_FLAGS | REPORT_ONLY_FIRST_FAILURE, setUp=setUp)
     ])
