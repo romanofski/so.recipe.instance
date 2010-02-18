@@ -22,7 +22,7 @@ We start with a minimal buildout recipe:
 ... parts = superorganism
 ...
 ... [superorganism]
-... recipe = so.recipe""")
+... recipe = so.recipe.instance""")
 
 Script Template
 ===============
@@ -53,7 +53,7 @@ used to illustrate the generation of the instance python script:
 ... parts = superorganism
 ...
 ... [superorganism]
-... recipe = so.recipe
+... recipe = so.recipe.instance
 ... scripttemplate = %s/script.tmpl
 ... """ % sample_buildout)
 >>> print system(buildout)
@@ -81,7 +81,7 @@ will have obviously a different name:
 ... parts = superorganism
 ...
 ... [superorganism]
-... recipe = so.recipe
+... recipe = so.recipe.instance
 ... script = instance
 ... database = %s/Data.fs
 ... """ % sample_buildout)

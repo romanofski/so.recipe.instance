@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-name = "so.recipe"
+name = "so.recipe.instance"
 setup(
     name = name,
     version = "0.1",
@@ -14,17 +14,16 @@ setup(
     keywords = "buildout recipe superorganism bugtracker",
     classifiers = ["Framework :: Buildout"],
     zip_safe=False,
-    packages = find_packages('src'),
+    packages = find_packages(exclude=['ez_setup']),
+    namespace_packages = ['so', 'so.recipe'],
     include_package_data = True,
-    package_dir = {'':'src'},
-    namespace_packages = ['so'],
     entry_points = {
         'zc.buildout': [
              'default = %s:Recipe' % name],
         'zc.buildout.uninstall': [
             'default = %s:uninstall' % name],
         },
-    test_suite = 'so.recipe.tests.test_recipe.test_suite',
+    test_suite = 'so.recipe.instance.tests.test_recipe.test_suite',
     tests_require = ['zope.testing',
                      'iw.recipe.template',
                     ],
