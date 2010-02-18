@@ -44,8 +44,8 @@ more flexibility for the developer to initialize the instance.
 >>> write(sample_buildout, 'script.tmpl',
 ... """
 ... import superorganism.app
-... superorganism.app.App(%s)
-... """ % sample_buildout)
+... superorganism.app.App($name)
+... """)
 
 This is obviously not a correct template to run the application, but is
 used to illustrate the generation of the instance python script:
@@ -73,7 +73,7 @@ The Superorganism script should now have also our template included:
 import sys
 sys.path...
 import superorganism.app
-superorganism.app.App(...)
+superorganism.app.App(superorganism)
 
 If we use a different name for the script name, our generated script
 will have obviously a different name:

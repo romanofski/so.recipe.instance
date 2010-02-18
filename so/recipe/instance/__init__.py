@@ -3,6 +3,7 @@ import os
 import zc.buildout
 import zc.recipe.egg
 import iw.recipe.template
+import Cheetah.Template
 
 class Recipe(object):
 
@@ -30,7 +31,10 @@ class Recipe(object):
         eggs, ws = self.egg.working_set()
         ws_locations = [d.location for d in ws]
         scriptname = self.options['script']
-        scripttempl = open(self.options['scripttemplate']).read()
+        scripttempl = Cheetah.Template.Template(
+            source=open(self.options['scripttemplate']).read(),
+            searchList=[self.name, self.options, self.buildout]
+        )
         kwargs = dict(
             source='%s/instance.tmpl' % os.path.dirname(__file__),
             destination=self.buildout['buildout']['bin-directory'],
