@@ -16,6 +16,10 @@ database
     A path where the Data.fs will be created. By default
     ${buildout:directory}/var/Data.fs will be used.
 
+location
+    A path to the location where the Data.fs will be installed. By
+    default the parts directory is used.
+
 We start with a minimal buildout recipe:
 
 >>> write(sample_buildout, 'buildout.cfg', 
@@ -24,7 +28,12 @@ We start with a minimal buildout recipe:
 ... parts = superorganism
 ...
 ... [superorganism]
-... recipe = so.recipe.instance
+... recipe = so.recipe
 ... database = %s/Data.fs
 ... """ % sample_buildout)
 
+The recipe should create a script to run the superorganism bugtracker:
+
+>>> print system(buildout)
+Installing superorganism.
+superorganism: Creating script .../bin/superorganism

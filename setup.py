@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-name = "so.instance"
+name = "so.recipe"
 setup(
     name = name,
     version = "0.1",
@@ -24,12 +24,13 @@ setup(
         'zc.buildout.uninstall': [
             'default = %s:uninstall' % name],
         },
-    test_suite = 'so.instance.tests.test_recipe.test_suite',
+    test_suite = 'so.recipe.tests.test_recipe.test_suite',
     tests_require = ['zope.testing',
                      'iw.recipe.template',
                     ],
     install_requires = ['zc.buildout',
                         'setuptools',
                         'iw.recipe.template',
+                        'zc.recipe.egg',
                        ],
     )
