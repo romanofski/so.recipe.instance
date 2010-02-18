@@ -1,18 +1,23 @@
-======================================
+========================================
  Superorganism Buildout Instance Recipe
-======================================
+========================================
 
-This buildout recipe creates an instance to run superorganism
+This buildout recipe creates an instance to run Superorganism
 bugtracker.
 
 The instance recipe has several options:
 
+scripttemplate
+    A template which generates the rest of the Python-instance script.
+    Cheetah is used for parsing the template and Python needs to be used
+    (obviously) as a template language.
 script
     The script option gives the name of the script to be generated in
     the bin buildout directory. By default, the name of the part is
     used.
-scripttemplate
-    A python template which generates the rest of the instance script.
+
+Script Template
+===============
 
 We start with a minimal buildout recipe:
 
@@ -24,10 +29,8 @@ We start with a minimal buildout recipe:
 ... [superorganism]
 ... recipe = so.recipe.instance""")
 
-Script Template
-===============
 
-The recipe should create a script to run the superorganism bugtracker:
+The recipe should create a script to run the Superorganism bugtracker:
 
 >>> print system(buildout)
 superorganism: Cannot find ...
@@ -60,7 +63,7 @@ used to illustrate the generation of the instance python script:
 Installing superorganism.
 ... Generated script '...bin/superorganism'...
 
-The superorganism script should now have also our template included:
+The Superorganism script should now have also our template included:
 
 >>> ls('bin')
 - buildout
