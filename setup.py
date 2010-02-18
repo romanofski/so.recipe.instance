@@ -1,4 +1,10 @@
+import os.path
 from setuptools import setup, find_packages
+
+
+def read(*rnames):
+    return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
+
 
 name = "so.recipe.instance"
 setup(
@@ -7,9 +13,11 @@ setup(
     author = "Roman Joost",
     author_email = "roman@bromeco.de",
     description = "zc.buildout recipe to run a superorganism instance.",
-    long_description = open('README.txt').read() + 
-        '\n\n' + 
-        open('CHANGES.txt').read(),
+    long_description = read('README.txt') +
+        '\n\n' +
+        read('so', 'recipe', 'instance', 'README.txt') +
+        '\n\n' +
+        read('CHANGES.txt'),
     license = "GPL",
     keywords = "buildout recipe superorganism bugtracker",
     classifiers = ["Framework :: Buildout"],
