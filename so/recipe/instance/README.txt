@@ -92,3 +92,15 @@ will have obviously a different name:
 Uninstalling superorganism.
 Installing superorganism.
 ... Generated script '...bin/instance'...
+
+
+Uninstalling
+============
+
+If we call the uninstallation routine, the recipe removes the generated
+script:
+
+>>> print system(buildout)
+Updating superorganism.
+superorganism: Removing script .../bin/instance
+... Generated script '/.../bin/instance'...

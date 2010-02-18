@@ -45,9 +45,14 @@ class Recipe(object):
                                   self.options['script'],
                                   kwargs).install()
 
-        logging.getLogger(self.name).info(
-            'Creating script %s', scriptname)
         return scriptname
 
     def update(self):
-        pass
+        self.uninstall()
+        self.install()
+
+    def uninstall(self):
+        logging.getLogger(self.name).info(
+            'Removing script %s', self.options['script'])
+        if os.path.exists(self.options['script']):
+            os.remove(self.options['script'])
