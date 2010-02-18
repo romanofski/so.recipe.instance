@@ -2,6 +2,7 @@ import logging
 import os
 import zc.buildout
 import zc.recipe.egg
+import iw.recipe.template
 
 class Recipe(object):
 
@@ -13,24 +14,32 @@ class Recipe(object):
         options['script'] = os.path.join(
             buildout['buildout']['bin-directory'],
             options.get('script', self.name))
-        options['database'] = os.path.join(
+        options['scripttemplate'] = os.path.join(
             buildout['buildout']['directory'],
-            options.get('database', 'Data.fs'))
-        options['location'] = os.path.join(
-            buildout['buildout']['parts-directory'],
-            self.name,
+            options.get('scripttemplate', 'script.tmpl'),
         )
-        if not os.path.isdir(os.path.dirname(options['database'])):
+
+        if not os.path.exists(options['scripttemplate']):
             logging.getLogger(self.name).error(
-                'Cannot find database at %s.',
-                options['database'], os.path.dirname(options['database']))
-            raise zc.buildout.UserError('Invalid Path to Database')
+                'Cannot find %s',
+                options['scripttemplate'],)
+            raise zc.buildout.UserError('Invalid Path to script template')
 
     def install(self):
         dest = []
         eggs, ws = self.egg.working_set()
         ws_locations = [d.location for d in ws]
         scriptname = self.options['script']
+        scripttempl = open(self.options['scripttemplate']).read()
+        kwargs = dict(
+            source='%s/instance.tmpl' % os.path.dirname(__file__),
+            destination=self.buildout['buildout']['bin-directory'],
+            eggs=ws_locations,
+            scripttemplate=scripttempl,
+        )
+        iw.recipe.template.Script(self.buildout,
+                                  self.options['script'],
+                                  kwargs).install()
 
         logging.getLogger(self.name).info(
             'Creating script %s', scriptname)
