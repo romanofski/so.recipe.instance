@@ -4,3 +4,7 @@
 
 This buildout recipe creates an executable for running a Superorganism
 instance.
+
+===============================
+!!! This recipe is obsolete !!!
+===============================
